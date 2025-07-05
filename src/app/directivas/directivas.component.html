@@ -1,0 +1,167 @@
+<div style="padding-left: 20%; padding-bottom: 15%;">
+
+<p>directivas works!</p>
+
+
+
+
+<br><br>
+<h2>MANEJO DE FORMULARIOS</h2>
+<table>
+    <tr>
+    <!--  1 -->
+        <td>Edad:</td>
+        <td><input type="text" name="" id=""[(ngModel)]="edad"></td>
+    </tr>
+<!-- 2 -->
+    <tr>
+        <td>Puesto:</td>
+        <td><select name="" id=""[(ngModel)]="puesto">
+            <option value="0">Seleccione Uno</option>
+            <option value="Gerente">Gerente</option>
+            <option value="Cajero">Cajero</option>
+
+        </select></td>
+    </tr>
+<!-- 3 -->
+    <tr>
+        <td>Sueldo:</td>
+        <td><input type="text" name="" id=""[(ngModel)]="sueldo"></td>
+    </tr>
+<!--  4-->
+    <tr>
+        <td>Genero:</td>
+        <td>Hombre:<input type="radio" name="genero" value="Hombre" id=""[(ngModel)]="genero"><br>
+        Mujer:<input type="radio" name="genero" value="Mujer" id=""[(ngModel)]="genero"></td>
+    </tr>
+</table>
+
+<br>
+Edad escrita: {{edad}} <br>
+Puesto seleccionado: {{puesto}} <br>
+Sueldo deseado: {{sueldo}} <br>
+Genero: {{genero}} <br>
+
+<br><br>
+<h2>IF</h2>
+
+Valor: <input type="number" [(ngModel)]="valor"><br>
+<!-- EL NGMODEL SIRVE crea la instancia de FormControl 
+ y la vincula a un elemento de control de formulario  -->
+{{valor}}
+<br><br>
+
+@if(valor==0){
+    <input type="button" value="Salir">
+}
+<br><br>
+
+@if(puesto=="Gerente" && edad=="21"){
+    <span>Bienvenido Gerente</span>
+    <div>
+        Fecha:<input type="date" name="" id=""><br>
+        Hora:<input type="time" name="" id=""><br>
+        Email:<input type="email" name="" id=""><br>
+        Comentarios: <textarea name="" id="" cols="30" rows="10"></textarea>
+    </div>
+}
+@else{
+    <span>No eres Gerente o no tienes 21 años </span>
+}
+</div>
+
+<hr>
+<h2>FOR</h2>
+
+
+<ul>
+    @for(frut of frutas; track frut){
+
+<li>{{frut}}</li>
+
+    } 
+    @empty{
+        <li>Coleccion vacia </li>
+    } 
+</ul>
+
+<br><br>
+<table border="3">
+    <tr style="background: gray; color:white">
+        <th>NOMBRE</th>
+        <th>TIPO</th>
+        <th>RAZA</th>
+        <th>SEXO</th>
+        <th>PRECIO</th>
+        <th>TALLA</th>
+
+    </tr>
+@for(pro of productos; track pro.nombre){
+<tr>
+    <td>{{pro.nombre }}</td>
+    <td>{{pro.tipo}}</td>
+    <td>{{pro.raza}}</td>
+    <td>{{pro.sexo}}</td>
+    <td>{{pro.precio}}</td>
+    <td>{{pro.talla}}</td>
+</tr>
+    
+}
+
+@empty{
+<span>Coleccion vacia </span>
+}
+</table>
+
+<br>
+
+<ul *ngFor="let ver of verduras">
+    
+    <li>
+        {{ ver}}
+    </li>
+</ul>
+
+<hr>
+
+Cuatrimestre cursando: <input type="text" [(ngModel)]="cuatri">
+@switch(cuatri){
+
+    
+
+    @case ("1"){
+        <span>Estas en pañales</span>
+    }
+
+
+@case("Primero"){
+<span>Estas en pañales</span>
+    }
+
+    @case("2"){
+<span>Empiezas a caminar </span>
+    }
+
+    @case("3"){
+<span>Empiezas a correr</span>
+    }
+
+    @case("4"){
+<span>Ya corres y saltas</span>
+    }
+
+    @case("5"){
+<span>Eres todo un programador</span>
+    }
+
+    @case("6"){
+<span>Eres un master</span>
+    }
+
+    @case("7"){
+<span>Casi un  ChatGpt</span>
+    }
+    @default{
+<span>Opcion incorrecta o escribe una</span>
+    }
+}

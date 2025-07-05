@@ -1,0 +1,89 @@
+<div style="padding-left: 20;">
+  <h2>Empleados</h2>
+
+  <table>
+    <tr>
+      <td colspan="2"><img src="/imagenes/no foto.jpg" alt="" width="15%" height="15%"></td>
+    </tr>
+
+    <tr>
+      <td>CODIGO:</td>
+      <td><input type="text" [(ngModel)]="empleado.codigo"></td>
+    </tr>
+
+    <tr>
+      <td>NOMBRE:</td>
+      <td><input type="text" [(ngModel)]="empleado.nombre"></td>
+    </tr>
+
+    <tr>
+      <td>APELLIDO PATERNO:</td>
+      <td><input type="text" [(ngModel)]="empleado.apellido_paterno"></td>
+    </tr>
+
+    <tr>
+      <td>APELLIDO MATERNO:</td>
+      <td><input type="text" [(ngModel)]="empleado.apellido_materno"></td>
+    </tr>
+
+    <tr>
+      <td>PUESTO:</td>
+      <td><input type="text" [(ngModel)]="empleado.puesto"></td>
+    </tr>
+
+    <tr>
+      <td>SUELDO:</td>
+      <td><input type="text" [(ngModel)]="empleado.sueldo"></td>
+    </tr>
+
+    <tr>
+      <td>CORREO:</td>
+      <td><input type="email" [(ngModel)]="empleado.correo"></td>
+    </tr>
+
+    <tr>
+      <td>FOTO:</td>
+      <td><input type="file" accept="image/*" (change)="fotoseleccionada($event)"></td>
+    </tr>
+
+    <tr>
+      <td colspan="2">
+        <input type="button" value="Guardar" (click)="guardarEmp()">
+        <input type="button" value="Modificar">
+        <input type="button" value="Eliminar">
+        <input type="button" value="Ver lista" (click)="verLista()">
+      </td>
+    </tr>
+  </table>
+
+  <br><br>
+
+  <table>
+    <tr>
+      <th>CODIGO</th>
+      <th>NOMBRE</th>
+      <th>APELLIDO PATERNO</th>
+      <th>APELLIDO MATERNO</th>
+      <th>PUESTO</th>
+      <th>SUELDO</th>
+      <th>CORREO</th>
+      <th>FOTO</th>
+    </tr>
+
+    @for(emp of empleados; track emp.nombre) {
+      <tr>
+        <td>{{ emp.codigo }}</td>
+        <td>{{ emp.nombre }}</td>
+        <td>{{ emp.apellido_paterno }}</td>
+        <td>{{ emp.apellido_materno }}</td>
+        <td>{{ emp.puesto }}</td>
+        <td>{{ emp.sueldo }}</td>
+        <td>{{ emp.correo }}</td>
+        <td><img [src]="emp.foto" alt="" width="100"></td>
+      </tr>
+    }
+    @empty {
+      <span>No hay información que mostrar</span>
+    }
+  </table>
+</div>

@@ -1,0 +1,97 @@
+
+<div style="padding-left: 20;">
+    <h2>Productos</h2>
+
+<table>
+    <tr>
+        @if(producto.imgurl){
+           <td colspan="2"><img src="{{producto.imgurl}}" alt="" width="15%" height="15%"></td> 
+        }
+        @else{
+            <td colspan="2"><img src="/imagenes/no foto.jpg " alt="" width="15%" height="15%"></td>
+        }
+        
+    </tr>
+
+    <tr>
+        <td>CODIGO:</td>
+        <td><input type="text" name="" id="" [(ngModel)]="producto.codigo"></td>
+    </tr>
+
+<tr>
+        <td>NOMBRE:</td>
+        <td><input type="text" name="" id="" [(ngModel)]="producto.nombre"></td>
+    </tr>
+
+
+
+<tr>
+        <td>DESCRIPCION:</td>
+        <td><input type="text" name="" id="" [(ngModel)]="producto.descripcion"></td>
+    </tr>
+
+
+     <tr>
+        <td>EXISTENCIA:</td>
+        <td><input type="text" name="" id="" [(ngModel)]="producto.existencia"></td>
+    </tr>
+
+     <tr>
+        <td>PRECIO:</td>
+        <td><input type="text" name="" id="" [(ngModel)]="producto.precio"></td>
+    </tr>
+
+<tr>
+    <td>Foto:</td>
+    <td><input type="file" name="imagen" id="imagen" accept="imagen/png, imagen/jpeg, imagen/gif" (change)="fotoseleccionada($event)"></td>
+</tr>
+
+
+<tr>
+    <td colspan="2">
+        <input type="button" value="Consultar" (click)="consultarProd()">
+        <input type="button" value="Guardar" (click)="guardarProd()">
+        <input type="button" value="Modificar" (click)="modificarProd()">
+        <input type="button" value="Eliminar" (click)="eliminarProd()">
+        <input type="button" value="Ver lista" (click)="verLista()">
+        <input type="button" value="Cambiar Imagen" (click)="modificarImagen()">
+    </td>
+    <td></td>
+</tr>
+
+</table>
+
+<br><br>
+
+<table>
+    <tr>
+        <th>CODIGO</th>
+         <th>NOMBRE</th>
+          <th>DESCRIPCION</th>
+           <th>EXISTENCIA</th>
+            <th>PRECIO</th>
+            <th>FOTO</th>
+            
+
+    </tr>
+@for(prod of productos; track prod.nombre){
+
+
+
+    <tr>
+        <td>{{prod.codigo }}</td>
+        <td>{{prod.nombre }}</td>
+        <td>{{prod.descripcion }}</td>
+        <td>{{prod.existencia }}</td>
+        <td>{{prod.precio }}</td>
+       <td><img src="{{prod.imgurl }}" alt=""></td>
+
+    </tr>
+}
+@empty{
+<span>No hay informacion que mostrar</span>
+}
+</table>
+
+
+</div>
